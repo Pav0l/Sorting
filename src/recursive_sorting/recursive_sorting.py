@@ -1,3 +1,5 @@
+from time import time
+
 
 def merge(left, right):
     merged_arr = []
@@ -31,7 +33,7 @@ def merge(left, right):
 
 # implement the Merge Sort function below USING RECURSION
 def merge_sort(arr):
-    # Divide the array untill it's n elements of len 1
+    # Divide the array until it's n elements of len 1
     if len(arr) > 1:
         print(f'\nDivide {arr} into:')
         left = merge_sort(arr[0:len(arr)//2])
@@ -44,7 +46,10 @@ def merge_sort(arr):
     return arr
 
 
-# merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
+start = time()
+merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
+end = time()
+print(f'Merge sort finished sorting in: {end-start} s')
 
 # STRETCH: implement an in-place merge sort algorithm
 
