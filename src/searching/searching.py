@@ -47,7 +47,7 @@ def binary_search(arr, target):
     return '\nTarget not found'
 
 
-print(binary_search([0, 1, 2, 3, 4, 5, 6, 8, 9], 7))
+# print(binary_search([0, 1, 2, 3, 4, 5, 6, 8, 9], 7))
 
 # STRETCH: write a recursive implementation of Binary Search
 
@@ -57,5 +57,27 @@ def binary_search_recursive(arr, target, low, high):
     middle = (low+high)//2
 
     if len(arr) == 0:
-        return -1  # array empty
+        return 'Can not serach in empty list'
     # TO-DO: add missing if/else statements, recursive calls
+    print(
+        f'\nSearching in arr: {arr[low:high]}\nTarget: {target}\nMid point: {arr[middle]} at index {middle}')
+    if target < arr[middle]:
+        print(
+            f'Target lower than mid. Removing RHS. Resulting arr: {arr[0:middle-1]}')
+        return binary_search_recursive(arr, target, 0, middle-1)
+    elif target > arr[middle]:
+        print(
+            f'Target higher than mid. Removing LHS. Resulting arr: {arr[middle+1:high]}')
+        return binary_search_recursive(arr, target, middle+1, high)
+    elif target == arr[middle]:
+        return middle
+    else:
+        return 'Target not found'
+
+    return f'Target found at index: {middle}'
+
+
+a = [0, 1, 2, 3, 4, 5, 6, 8, 9]
+low = 0
+high = len(a)-1
+print(binary_search_recursive(a, 8, low, high))
